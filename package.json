@@ -1,0 +1,16 @@
+{
+  "name": "proyecto_villa_albino",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "jhon alejandro viafara",
+  "license": "ISC",
+  "description": "sistema programado para villa albino",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  }
+}
