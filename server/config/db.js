@@ -16,7 +16,7 @@ const connection = createConnection({
             console.error('error conectando a la base de datos', err)
             return
         } 
-        console.log("conexion a la base de datos establecida genio jhonsito")
+        console.log("conexion a la base de datos establecida")
     })
     
 //exportar la conexion para usarla en otros archivos

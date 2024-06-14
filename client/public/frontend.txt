@@ -1,0 +1,45 @@
+Creación de Página de Inicio para Club Deportivo
+
+1. Encabezado:
+
+    Logo del club.
+    Menú de navegación con enlaces a secciones importantes (Inicio, Resultados, Fotos, Próximos Partidos, Acerca del Club, Contacto, etc.).
+    Botones de inicio de sesión/registro si es necesario.
+
+2. Sección de Últimos Resultados:
+
+    Lista o tabla de los últimos resultados del equipo.
+    Incluir marcador, fecha y rival.
+
+3. Sección de Fotos del Club/Equipo:
+
+    Galería de imágenes que muestra fotos del club y del equipo.
+    Organizar por eventos, partidos, entrenamientos, etc.
+
+4. Sección de Próximos Partidos:
+
+    Lista de los próximos partidos del equipo.
+    Incluir fecha, hora, lugar y rival.
+
+5. Sección de Información del Club:
+
+    Breve descripción del club, su historia, valores, etc.
+    Incluir logros destacados, como títulos ganados.
+
+6. Sección de Noticias/Actualizaciones:
+
+    Espacio para publicar noticias relacionadas con el club, como fichajes, lesiones, eventos especiales, etc.
+
+7. Sección de Contacto:
+
+    Información de contacto del club (dirección, teléfono, correo electrónico).
+    Formulario de contacto para consultas generales o sugerencias.
+    Agregar API de Google Maps para la ubicación:
+        Utilizar la API de Google Maps para mostrar la ubicación del club en un mapa interactivo.
+        Permitir a los usuarios obtener direcciones y explorar la zona alrededor del club.
+
+8. Pie de Página:
+
+    Enlaces adicionales de navegación.
+    Enlaces a redes sociales del club.
+    Copyright y otros detalles legales.
