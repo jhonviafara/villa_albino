@@ -1,8 +1,10 @@
 # villa_albino
 estamos trabajando con node para trabajar el backend implementando el framework express para realizar las peticiones http (CRUD create,read,updatey dellete) 
-pasos:
-number one
+
+paso numero 1:
+
 Diseño de la Base de Datos: en proceso...
+
 CREATE DATABASE villa_albino;
 USE villa_albino;
 
@@ -74,9 +76,8 @@ CREATE TABLE patrocinadores (
     informacion_contacto VARCHAR(255)
 );
 
+numero dos:
 
-
-nomber two
 Definición de Endpoints y Rutas
 number tree
 Creación de Modelos y Controladores

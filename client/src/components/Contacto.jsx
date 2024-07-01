@@ -1,4 +1,5 @@
 import React from 'react';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const Contacto = () => {
   const informacionContacto = {
@@ -12,6 +13,11 @@ const Contacto = () => {
     // Aquí podrías agregar la lógica para enviar el formulario
   };
 
+  const mapStyles = {
+    height: '400px',
+    width: '100%'
+  };
+
   return (
     <section id="contacto" className="py-8 bg-gray-800">
       <div className="container mx-auto">
@@ -22,7 +28,6 @@ const Contacto = () => {
             <p><strong>Dirección:</strong> {informacionContacto.direccion}</p>
             <p><strong>Teléfono:</strong> {informacionContacto.telefono}</p>
             <p><strong>Correo Electrónico:</strong> {informacionContacto.correo}</p>
-            {/* Aquí podrías agregar un mapa utilizando la API de Google Maps */}
           </div>
           <div>
             <h3 className="text-lg font-bold mb-2 text-white">Formulario de Contacto</h3>
@@ -41,6 +46,22 @@ const Contacto = () => {
               </div>
               <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-200">Enviar</button>
             </form>
+          </div>
+        </div>
+        <div className="mt-8">
+          <h3 className="text-lg font-bold mb-2 text-white">Ubicación</h3>
+          <div style={{ height: '400px', width: '100%' }}>
+            <LoadScript
+              googleMapsApiKey="AIzaSyArynI0GKkpNYBqqvK6VEM-C1dQjOkke9Y"
+            >
+              <GoogleMap
+                mapContainerStyle={mapStyles}
+                center={{ lat: 0, lng: 0 }} // Puedes ajustar las coordenadas según tu ubicación
+                zoom={15} // Puedes ajustar el nivel de zoom
+              >
+                {/* Aquí podrías agregar marcadores u otra personalización del mapa si es necesario */}
+              </GoogleMap>
+            </LoadScript>
           </div>
         </div>
       </div>

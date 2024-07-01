@@ -7,6 +7,8 @@ import PieDePagina from './components/PiePagina'
 import ProximosPartidos from './components/ProximosPartidos'
 import TituloPrincipal from './components/TituloPrincipal'
 import UltimosResultados from './components/UltimosResultados'
+import Home from './pages/home.pages'
+import Login from './pages/login.pages'
 
 
 
@@ -15,20 +17,13 @@ import UltimosResultados from './components/UltimosResultados'
 
 
 function App() {
- 
+
 
   return (
-   
+
     <>
-    <div className='bg-green-600'>
-    <Header/>
-    <TituloPrincipal/>
-    <UltimosResultados/>
-    <Carrousel1/>
-    <ProximosPartidos/>
-    <Contacto/>
-    <PieDePagina/>
-    </div>
+      {/* <Home /> */}
+      <Login/>
     </>
   )
 }
