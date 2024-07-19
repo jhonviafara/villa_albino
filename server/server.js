@@ -15,14 +15,7 @@ app.get('/', (req, res) => {
         res.json(result1);
     });   
 })
-app.get('/', (req,res)=>{
-    connection.query('SELECT * FROM jugadores', (err, result2)=>{
-        if (err) {
-            return res.status(500).send(err)
-        }
-        res.json(result2); 
-});
-})
+
 
 
 app.listen(PORT, () => {
