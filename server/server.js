@@ -12,11 +12,10 @@ app.get('/', (req, res) => {
         if (err) {
             return res.status(500).send(err);
         }
+        
         res.json(result1);
     });   
 })
-
-
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
