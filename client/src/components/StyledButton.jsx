@@ -46,9 +46,6 @@ StyledButton.propTypes = {
   innerText: PropTypes.string.isRequired,
   btnType: PropTypes.string.isRequired,
 };
+export default StyledButton;
 
-<<<<<<< HEAD
-export default StyledButton;
-=======
-export default StyledButton;
->>>>>>> cbe5d73e7bf5e7a70c90d2f42837096d468884ca
+

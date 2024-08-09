@@ -8,12 +8,8 @@ function StyledInput({
   BLLabel,
   BRLabel,
   inputRef,
-<<<<<<< HEAD
   // eslint-disable-next-line react/prop-types
-  textColor
-=======
   textColor,
->>>>>>> cbe5d73e7bf5e7a70c90d2f42837096d468884ca
 }) {
   return (
     <label className="form-control w-full max-w-xs">
@@ -45,8 +41,6 @@ StyledInput.propTypes = {
   inputRef: PropTypes.object,
 };
 
-<<<<<<< HEAD
 export default StyledInput;
-=======
-export default StyledInput;
->>>>>>> cbe5d73e7bf5e7a70c90d2f42837096d468884ca
+
+
