@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config();//variables de entorno cargadas desde el archivo .env
+dotenv.conig();//variables de entorno cargadas desde el archivo .env
 
 import connection from './config/db.js';
 import express from 'express'
