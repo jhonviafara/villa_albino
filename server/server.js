@@ -1,22 +1,17 @@
-import dotenv from 'dotenv';
-dotenv.conig();//variables de entorno cargadas desde el archivo .env
-
-import connection from './config/db.js';
-import express from 'express'
+import dotenv, { config } from 'dotenv';
+import router from './routes/auth.js'; // Ruta de autenticación de usuario
+import express from 'express';
+import cors from 'cors'
 
 const app = express();
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
+dotenv.config(); // Carga variables de entorno desde .env
 
-app.get('/', (req, res) => {
-    connection.query('SELECT * FROM clubes', (err, result1) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        
-        res.json(result1);
-    });   
-})
-
+app.use(cors())
+app.use(express.json())
+// Rutas de logueo
+app.use('/', router);
+// Inicia el servidor
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
