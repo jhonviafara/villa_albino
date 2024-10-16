@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import LogoImage from './LogoImage';
 
 const Header = () => {
@@ -40,7 +40,7 @@ const Header = () => {
             <li><a href="#proximos-partidos" className="text-white">Próximos Partidos</a></li>
             <li><a href="#acerca-del-club" className="text-white">Acerca del Club</a></li>
             <li><a href="#contacto" className="text-white">Contacto</a></li>
-            <li><a href="#iniciar-sesion" className="text-white">Iniciar Sesión</a></li>
+            <li><a href="#iniciar-sesion" className="text-white">cerrar Sesión</a></li>
           </ul>
         </div>
         

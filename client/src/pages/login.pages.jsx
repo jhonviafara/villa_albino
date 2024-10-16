@@ -1,108 +1,142 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../assets/Logo-Club.png";
-import StyledButton from "../components/StyledButton"
-import StyledInput from "../components/StyledInput"
-
-function Login() {
-    const [nombre setnombre] = useState("");
-    const
-    const
-    const
-    return (
-        <div className="hero bg-green-700 min-h-screen">
-            <div className="hero-content text-center flex flex-col">
-                <img src={Logo} alt="" className="w-44 block drop-shadow-xl" />
-                <form className="max-w-md" type="submit">
-                    <StyledInput placeholder={"Ingrese su usuario"}  textColor={"text-white"}/>
-                    <StyledInput placeholder={"Ingrese su contraseña"} BRLabel={"Olvide mi Contraseña"} type="password" textColor={"text-white"}/>
-                    <StyledButton accept innerText={"Ingresar"} btnType={"submit"} />
-                </form>
-            </div>
-        </div>
-    );
-}
-
-export default Login;
-/* Para implementar la lógica de inicio de sesión en tu componente Login.page.jsx, necesitas hacer lo siguiente:
-
-    Capturar los valores del formulario (nombre de usuario y contraseña).
-    Enviar esos valores al backend utilizando fetch.
-    Procesar la respuesta del servidor (validar si las credenciales son correctas).
-
-Aquí tienes un ejemplo de cómo hacerlo:
-
-jsx
-
-import React, { useState } from "react";
 import Logo from "../assets/Logo-Club.png";
 import StyledButton from "../components/StyledButton";
 import StyledInput from "../components/StyledInput";
-import { useNavigate } from "react-router-dom";
+
 
 function Login() {
     const [nombre, setNombre] = useState("");
+    const [email, setEmail ] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState(""); // Para el registro
+    const [error, setError] = useState("");
+    const [isRegistering, setIsRegistering] = useState(false);
     const navigate = useNavigate();
 
     const handleLogin = async (event) => {
         event.preventDefault();
 
         try {
+            
             const response = await fetch("http://localhost:3001/login", {
+                
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ nombre, password }),
+                
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                // Si el login es exitoso, redirigir a la ruta "/home"
-                navigate("/home");
+            const data = await response.json();
+            console.log( data)
+
+            if (data.success) {
+                navigate('/home');
             } else {
-                alert("Usuario o contraseña incorrectos");
+                setError('Nombre o contraseña incorrectos');
             }
-        } catch (error) {
-            console.error("Error durante el login:", error);
-            alert("Hubo un problema con el servidor.");
+        } catch (err) {
+            console.error("Error en el inicio de sesión", err);
+            setError('Hubo un problema con el inicio de sesión');
+        }
+    }; 
+
+    const handleRegister = async (event) => {
+        event.preventDefault();
+        if (password !== confirmPassword) {
+            setError('Las contraseñas no coinciden');
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:3001/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ nombre, email, password }),
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                navigate('/home');
+            } else {
+                setError('Error en el registro');
+            }
+        } catch (err) {
+            console.error("Error en el registro", err);
+            setError('Hubo un problema con el registro');
         }
     };
 
     return (
         <div className="hero bg-green-700 min-h-screen">
             <div className="hero-content text-center flex flex-col">
-                <img src={Logo} alt="" className="w-44 block drop-shadow-xl" />
-                <form className="max-w-md" onSubmit={handleLogin}>
-                    <StyledInput
-                        placeholder={"Ingrese su usuario"}
-                        value={nombre}
-                        onChange={(e) => setNombre(e.target.value)}
-                        textColor={"text-white"}
-                    />
-                    <StyledInput
-                        placeholder={"Ingrese su contraseña"}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        type="password"
-                        BRLabel={"Olvide mi Contraseña"}
-                        textColor={"text-white"}
-                    />
-                    <StyledButton accept innerText={"Ingresar"} btnType={"submit"} />
-                </form>
+                <img src={Logo} alt="Logo" className="w-44 block drop-shadow-xl" />
+                {isRegistering ? (
+                    <form className="max-w-md" onSubmit={handleRegister}>
+                        <StyledInput 
+                            placeholder={"Ingrese su nombre"} 
+                            textColor={"text-gray"}
+                            value={nombre}
+                            type="text"
+                            onChange={(e) => setNombre(e.target.value)}
+                        />
+                        <StyledInput 
+                            placeholder={"Ingrese su correo electrónico"} 
+                            type="email" 
+                            textColor={"text-gray"}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <StyledInput 
+                            placeholder={"Ingrese su contraseña"} 
+                            type="password" 
+                            textColor={"text-gray"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <StyledInput 
+                            placeholder={"Confirme su contraseña"} 
+                            type="password" 
+                            textColor={"text-gray"}
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                        {error && <p className="text-red-500">{error}</p>}
+                        <StyledButton accept innerText={"Registrarse"} btnType={"submit"} />
+                    </form>
+                ) : (
+                    <form className="max-w-md" onSubmit={handleLogin}>
+                        <StyledInput 
+                            placeholder={"Ingrese su nombre"} 
+                            textColor={"text-gray"}
+                            value={nombre}
+                            type="text"
+                            onChange={(e) => setNombre(e.target.value)}
+                        />
+                        <StyledInput 
+                            placeholder={"Ingrese su contraseña"} 
+                            type="password" 
+                            textColor={"text-gray"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {error && <p className="text-red-500">{error}</p>}
+                        <StyledButton accept innerText={"Ingresar"} btnType={"submit"} />
+                    </form>
+                )}
+                <button 
+                    className="text-white mt-4 underline"
+                    onClick={() => setIsRegistering(!isRegistering)}
+                >
+                    {isRegistering ? "Ya tienes cuenta? Inicia sesión" : "No tienes cuenta? Regístrate"}
+                </button>
             </div>
         </div>
     );
 }
 
 export default Login;
-
-Explicación:
-
-    Captura de datos: Se utilizan dos estados (nombre y password) para capturar los valores de los inputs.
-    Envío de datos: Cuando el formulario se envía, se llama a la función handleLogin, que utiliza fetch para enviar los datos al backend.
-    Validación y redirección: Si el servidor responde correctamente (usuario válido), se redirige al usuario a la página /home usando useNavigate.
-
-Recuerda que necesitas un endpoint en tu backend (/login) que valide las credenciales contra la base de datos y devuelva una respuesta adecuada.
-/*

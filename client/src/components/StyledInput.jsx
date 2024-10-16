@@ -1,46 +1,40 @@
-import PropTypes from "prop-types";
-
-function StyledInput({
-  placeholder,
-  type,
-  TLLabel,
-  TRLabel,
-  BLLabel,
-  BRLabel,
-  inputRef,
+/* eslint-disable react/prop-types */
+// StyledInput.jsx
   // eslint-disable-next-line react/prop-types
-  textColor,
-}) {
+
+
+const StyledInput = ({ placeholder, type, value, onChange, textColor }) => {
   return (
     <label className="form-control w-full max-w-xs">
       <div className="label">
-        <span className={`text-label underline ${textColor}`}>{TLLabel}</span>
-        <span className={`text-label-alt ${textColor}`}>{TRLabel}</span>
+        <span className={`text-label underline ${textColor}`}></span>
+        <span className={`text-label-alt ${textColor}`}></span>
       </div>
       <input
-        ref={inputRef}
-        type={type}
-        placeholder={placeholder}
-        className="input input-bordered w-full rounded-full max-w-xs bg-white focus:border-none ring-1 ring-transparent focus:ring-1 focus:ring-blue-400 focus:outline-none"
-      />
+            placeholder={placeholder}
+            type={type}
+            value={value}
+            onChange={onChange}
+            className={`input ${textColor}`}
+        />
       <div className="label">
-        <span className={`text-label-alt ${textColor}`}>{BLLabel}</span>
-        <span className={`text-label-alt ${textColor}`}>{BRLabel}</span>
+        <span className={`text-label-alt ${textColor}`}></span>
+        <span className={`text-label-alt ${textColor}`}></span>
       </div>
     </label>
   );
 }
 
-StyledInput.propTypes = {
-  placeholder: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  TLLabel: PropTypes.string,
-  TRLabel: PropTypes.string,
-  BLLabel: PropTypes.string,
-  BRLabel: PropTypes.string,
-  inputRef: PropTypes.object,
-};
 
 export default StyledInput;
+
+
+
+
+
+
+
+
+
 
 
