@@ -5,7 +5,7 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="bg-green-600 p-4 border-white border border-gray-300 shadow-md rounded-md p-4" > {/* Añade la clase border-white para el borde blanco */}
+    <div className="bg-green-600 p-4 border-white border border-gray-300 shadow-md rounded-md p-4 sticky top-0" > 
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <LogoImage/>
