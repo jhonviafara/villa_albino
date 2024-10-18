@@ -1,27 +1,21 @@
-import Carrousel1 from "../components/CarrouselFotos";
 import Contacto from "../components/Contacto";
-import Header from "../components/Header";
-import Noticias from "../components/Noticias";
 import PieDePagina from "../components/PiePagina";
 import ProximosPartidos from "../components/ProximosPartidos";
 import TituloPrincipal from "../components/TituloPrincipal";
 import UltimosResultados from "../components/UltimosResultados";
-import Fondo from "../assets/Foto-Fondo.jpg"
+import PlayersTable from "./planilla.pages";
 
 function Home() {
     return (
         <div>
-             <div className=""
-         style={{backgroundImage: `url(${Fondo})`}}>
-            <Header />
-            <TituloPrincipal/>
-            <Carrousel1/>
+            <div className='bg-green-600'>
+            <TituloPrincipal />
             <UltimosResultados />
             <ProximosPartidos />
-            <Noticias/>
+            <PlayersTable/>
             <Contacto />
             <PieDePagina />
-        </div>
+            </div>
         </div>
     );
 }

@@ -10,6 +10,7 @@ const UltimosResultados = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <section className="py-8">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-center text-white">Últimos Resultados</h2>
@@ -30,6 +31,19 @@ const UltimosResultados = () => {
           ))}
         </div>
       </div>
+=======
+    <section className="p-4 md:p-6 lg:p-8 xl:p-10 rounded-md p-4 bg-gray-800">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-center text-white">Últimos Resultados</h2>
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {results.map((result, index) => (
+          <li key={index} className="bg-white rounded-lg  p-4">
+            <span className="font-bold block">{result.rival}</span>
+            <span className="text-gray-600 block">{result.marcador}</span>
+            <span className="text-gray-600 block">{result.fecha}</span>
+          </li>
+        ))}
+      </ul>
+>>>>>>> origin/frontend
     </section>
   );
 };

@@ -5,8 +5,13 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
+<<<<<<< HEAD
     <header className="p-4 bg-green-600">
       <div className="container mx-auto flex justify-between items-center">
+=======
+    <div className="bg-green-600 p-4 border-white border border-gray-300 shadow-md rounded-md p-4 sticky top-0" > 
+      <div className="flex justify-between items-center">
+>>>>>>> origin/frontend
         <div className="flex items-center">
           <LogoImage />
           <h1 className="text-white text-2xl font-bold ml-2">Villa Albino</h1> {/* Nuevo: Nombre del club */}
