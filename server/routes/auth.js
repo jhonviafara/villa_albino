@@ -1,10 +1,10 @@
 import express from 'express';
 import connection from '../config/db.js'; 
 
-const router = express.Router();
+const routerLogin = express.Router();
  
 //loguear usuario existente
-router.post('/login', (req, res) => {
+routerLogin.post('/login', (req, res) => {
    
     
     const { nombre, password } = req.body;
@@ -36,7 +36,7 @@ router.post('/login', (req, res) => {
 
 
 // Ruta para registrar un nuevo usuario
-router.post('/register', async (req, res) => {
+routerLogin.post('/register', async (req, res) => {
     const { nombre, password } = req.body;
 
     try {
@@ -54,4 +54,4 @@ router.post('/register', async (req, res) => {
     }
 });
 
-export default router;
+export default routerLogin;
