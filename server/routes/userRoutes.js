@@ -1,10 +1,10 @@
 import express from 'express';
 import connection from '../config/db.js'; 
 
-const router = express.Router();
+const getPlayer = express.Router();
 
 
-router.get('/jugadores', async (req, res) => {
+getPlayer.get('/jugadores', async (req, res) => {
     
     try {
       const jugadores = await connection.query('SELECT * FROM jugadores');
@@ -14,3 +14,5 @@ router.get('/jugadores', async (req, res) => {
     }
   });
   
+
+export default getPlayer
