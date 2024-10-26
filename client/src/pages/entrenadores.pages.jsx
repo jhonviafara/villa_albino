@@ -2,21 +2,21 @@ import { useEffect, useState } from 'react';
 import { FaPlay, FaExclamationTriangle, FaBan } from 'react-icons/fa';
 import Logo from "../assets/Logo-Club.png";
 
-function PlanillaPages() {
-  const [jugadores, setJugadores] = useState([]);
+function PlanillaEPages() {
+  const [entrenadores, setEntrenadores] = useState([]);
 
-  async function obtenerJugadores() {
-    const res = await getJugadores();
+  async function obtenerEntrenadores() {
+    const res = await getEntrenadores();
     console.log(res);
-    setJugadores(res);
+    setEntrenadores(res);
   }
 
   useEffect(() => {
-    obtenerJugadores();
+    obtenerEntrenadores();
   }, []);
 
-  const getStatusStyles = (estado) => {
-    switch (estado) {
+  const getStatusStyles = (status) => {
+    switch (status) {
       case 'Jugando':
         return { bgColor: 'bg-green-100', textColor: 'text-green-600', icon: <FaPlay /> };
       case 'Lesionado':
@@ -34,27 +34,25 @@ function PlanillaPages() {
 
       <div className="bg-white shadow-md rounded-lg overflow-hidden w-full max-w-2xl"> 
         <h2 className="text-center text-xl font-semibold py-3 text-gray-700">
-          Lista de Jugadores
+          Lista de Entrenadores
         </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 text-left text-sm"> 
             <thead>
               <tr className="bg-gray-300 text-gray-700">
                 <th className="py-2 px-3 border-b font-semibold">Nombre</th>
-                <th className="py-2 px-3 border-b font-semibold">Categoría</th>
-                <th className="py-2 px-3 border-b font-semibold">Estado</th>
+                <th className="py-2 px-3 border-b font-semibold">Apellido</th>
+                <th className="py-2 px-3 border-b font-semibold">Categoria</th>
               </tr>
             </thead>
             <tbody>
-              {jugadores.map((jugador) => {
-                const { bgColor, textColor, icon } = getStatusStyles(jugador.estado);
+              {entrenadores.map((entrenador) => {
                 return (
                   <tr key={jugador.id} className={`hover:bg-gray-100 ${bgColor}`}>
-                    <td className="py-2 px-3 border-b text-gray-800">{jugador.estado}</td> 
-                    <td className="py-2 px-3 border-b text-gray-800">{jugador.categoria}</td>
-                    <td className={`py-2 px-3 border-b flex items-center ${textColor}`}>
-                      {icon} <span className="ml-1">{jugador.estado}</span> 
-                    </td>
+                    <td className="py-2 px-3 border-b text-gray-800">{entrenador.name}</td> 
+                    <td className="py-2 px-3 border-b text-gray-800">{entrenador.apellido}</td>
+                    <td className={`py-2 px-3 border-b flex items-center ${textColor}`}></td>
+                    <td className="py-2 px-3 border-b text-gray-800">{entrenador.categoria}</td>
                   </tr>
                 );
               })}
@@ -66,4 +64,4 @@ function PlanillaPages() {
   );
 }
 
-export default PlanillaPages;
+export default PlanillaEPages;

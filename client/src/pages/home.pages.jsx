@@ -14,7 +14,6 @@ function Home() {
             <TituloPrincipal />
             <UltimosResultados />
             <ProximosPartidos />
-            <PlayersTable/>
             <PieDePagina />
             </div>
         </div>

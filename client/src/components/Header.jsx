@@ -22,10 +22,10 @@ const Header = () => {
         {/* Menú principal para pantallas medianas y grandes */}
         <nav className="hidden md:flex ml-4">
           <ul className="flex space-x-4">
-            <li><a href="#categorias" className="text-white">categorias</a></li>
+            <li><a href="#categorias" className="text-white">Categorias</a></li>
             <li><a href="#resultados" className="text-white">Resultados</a></li>
             <li><a href="#proximos-partidos" className="text-white">Próximos Partidos</a></li>
-            <li><a href="#lista-jugadores" className="text-white">listado de jugadores</a></li>
+            <li><a href="#lista-jugadores" className="text-white">Listado de Jugadores</a></li>
           </ul>
         </nav>
 
@@ -39,12 +39,10 @@ const Header = () => {
         {/* Menú desplegable para pantallas pequeñas */}
         <div className={`md:hidden ${showMenu ? 'block' : 'hidden'}`}>
           <ul className="flex flex-col space-y-2">
-            <li><a href="#inicio" className="text-white">Inicio</a></li>
+          <li><a href="#categorias" className="text-white">Categorias</a></li>
             <li><a href="#resultados" className="text-white">Resultados</a></li>
-            <li><a href="#fotos" className="text-white">Fotos</a></li>
             <li><a href="#proximos-partidos" className="text-white">Próximos Partidos</a></li>
-            <li><a href="#acerca-del-club" className="text-white">Acerca del Club</a></li>
-            <li><a href="#contacto" className="text-white">Contacto</a></li>
+            <li><a href="#planilla-jugadores" className="text-white">Listado de Jugadores</a></li>
           </ul>
         </div>
 
