@@ -1,6 +1,6 @@
 import sqlite3 from 'sqlite3';
 
-const connection = new sqlite3.Database("../app.db");
+ const connection = new sqlite3.Database("data.db");
 
 connection.all("SELECT DATE() AS fecha", (error, result) => {
     if (error) {

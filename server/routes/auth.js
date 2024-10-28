@@ -5,15 +5,14 @@ const routerLogin = express.Router();
  
 //loguear usuario existente
 routerLogin.post('/login', (req, res) => {
-   
-    
+     
     const { nombre, password } = req.body;
     console.log("nombre recivido :"+ nombre)
     console.log("contraseña recivida :"+ password)
     // Consulta a la base de datos
     const query = 'SELECT * FROM usuarios WHERE nombre = ? ';
         
-    connection.query(query, [nombre], async (err, results) => {
+    connection.all(query, [nombre], (err, results) => {
         if (err) { 
               return res.status(500).json({ error: 'Error en la base de datos' });              
         }
