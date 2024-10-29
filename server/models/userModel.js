@@ -1,1 +1,1 @@
-export const query = 'SELECT * FROM usuarios WHERE nombre = ? '
+export const intentoLog = 'SELECT * FROM usuarios WHERE nombre = ? '

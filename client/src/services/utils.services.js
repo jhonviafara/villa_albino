@@ -1,4 +1,4 @@
-export const serverUrl = "http://localhost:4000";
+export const serverUrl = "http://localhost:3001";
 
 export async function get(route) {
   const res = await fetch(serverUrl + route,{
@@ -13,7 +13,12 @@ export async function get(route) {
     redirect: "follow", // manual, *follow, error
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
   })
+
   const data = await res.json();
+ //console.log(res);
+ 
+  //console.log(data);
+  
   return data;
 }
 

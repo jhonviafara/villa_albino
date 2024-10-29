@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Asegúrate de importar useHistory
+import { Link, useNavigate } from 'react-router-dom'; // Asegúrate de importar useHistory
 import LogoImage from './LogoImage';
+
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -22,10 +23,10 @@ const Header = () => {
         {/* Menú principal para pantallas medianas y grandes */}
         <nav className="hidden md:flex ml-4">
           <ul className="flex space-x-4">
-            <li><a href="#categorias" className="text-white">Categorias</a></li>
-            <li><a href="#resultados" className="text-white">Resultados</a></li>
-            <li><a href="#proximos-partidos" className="text-white">Próximos Partidos</a></li>
-            <li><a href="#lista-jugadores" className="text-white">Listado de Jugadores</a></li>
+            <li><Link to="/categorias" className="text-white">Categorias</Link></li>
+            <li><Link to="/resultados" className="text-white">Resultados</Link></li>
+            <li><Link to="/proximos-partidos" className="text-white">Próximos Partidos</Link></li>
+            <li><Link to="/planilla-jugadores" className="text-white">Listado de Jugadores</Link></li>
           </ul>
         </nav>
 
@@ -42,7 +43,7 @@ const Header = () => {
           <li><a href="#categorias" className="text-white">Categorias</a></li>
             <li><a href="#resultados" className="text-white">Resultados</a></li>
             <li><a href="#proximos-partidos" className="text-white">Próximos Partidos</a></li>
-            <li><a href="#planilla-jugadores" className="text-white">Listado de Jugadores</a></li>
+            <li><a href="#planilla-jugadores"  className="text-white">Listado de Jugadores</a></li> LINK
           </ul>
         </div>
 

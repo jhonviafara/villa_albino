@@ -1,5 +1,6 @@
 import express from 'express';
 import connection from '../config/db.js'; 
+import  {intentoLog}  from '../models/userModel.js';
 
 const routerLogin = express.Router();
  
@@ -7,26 +8,23 @@ const routerLogin = express.Router();
 routerLogin.post('/login', (req, res) => {
      
     const { nombre, password } = req.body;
-    console.log("nombre recivido :"+ nombre)
-    console.log("contraseña recivida :"+ password)
-    // Consulta a la base de datos
-    const query = 'SELECT * FROM usuarios WHERE nombre = ? ';
-        
-    connection.all(query, [nombre], (err, results) => {
-        if (err) { 
-              return res.status(500).json({ error: 'Error en la base de datos' });              
-        }
 
-         if (results.length > 0) {
-            const user = results[0]; 
-                          
+    // Consulta a la base de datos
+
+        
+    connection.all(intentoLog, [nombre], (err, results) => {
+        if (err) { 
+              return res.status(500).json({ error: 'Error en lel servidor' });              
+        }
+         if (results.length > 0){
+            const user = results[0];            
              if (user.password === password) {
                  res.status(200).json({ success: true, message: 'Login exitoso' });
                 } else {
-                res.status(401).json({ success: false, message: 'Credenciales incorrectas 1' });
+                res.status(401).json({ success: false, message: 'Credenciales incorrectas ' });
             }
         } else {            
-            res.status(401).json({ success: false, message: 'Credenciales incorrectas 2' });
+            res.status(401).json({ success: false, message: 'Credenciales incorrectas ' });
         }
     });
 });
@@ -42,10 +40,11 @@ routerLogin.post('/register', async (req, res) => {
 
         // Insertar el nuevo usuario en la base de datos
         const query = 'INSERT INTO usuarios (nombre, password) VALUES (?, ?)';
-        connection.query(query, [nombre,], (err) => {
+        connection.run(query, [nombre,], (err) => {
             if (err) {
-                return res.status(500).json({ error: 'Error en la base de datos' });
+                return res.status(500).json({ error: 'Error en el servidor' });
             }
+
             res.status(201).json({ success: true, message: 'Usuario registrado con éxito' });
         });
     } catch (err) {

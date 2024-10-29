@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react';
 import { FaPlay, FaExclamationTriangle, FaBan } from 'react-icons/fa';
 import Logo from "../assets/Logo-Club.png";
+//import { getJugadores } from '../services/lista.services';
+import { get } from '../services/utils.services';
 
 function PlanillaPages() {
   const [jugadores, setJugadores] = useState([]);
 
   async function obtenerJugadores() {
-    const res = await getJugadores();
+    const res = await get("/planilla-jugadores");
     console.log(res);
     setJugadores(res);
   }
 
   useEffect(() => {
     obtenerJugadores();
+
   }, []);
 
   const getStatusStyles = (estado) => {
     switch (estado) {
-      case 'Jugando':
+      case 'jugando':
         return { bgColor: 'bg-green-100', textColor: 'text-green-600', icon: <FaPlay /> };
       case 'Lesionado':
         return { bgColor: 'bg-red-100', textColor: 'text-red-600', icon: <FaExclamationTriangle /> };
@@ -41,23 +44,30 @@ function PlanillaPages() {
             <thead>
               <tr className="bg-gray-300 text-gray-700">
                 <th className="py-2 px-3 border-b font-semibold">Nombre</th>
-                <th className="py-2 px-3 border-b font-semibold">Categoría</th>
+                <th className="py-2 px-3 border-b font-semibold">apellido</th>
+                <th className="py-2 px-3 border-b font-semibold">edad</th>
                 <th className="py-2 px-3 border-b font-semibold">Estado</th>
               </tr>
             </thead>
             <tbody>
-              {jugadores.map((jugador) => {
+              {jugadores ? jugadores.map((jugador,index) => {
                 const { bgColor, textColor, icon } = getStatusStyles(jugador.estado);
                 return (
-                  <tr key={jugador.id} className={`hover:bg-gray-100 ${bgColor}`}>
-                    <td className="py-2 px-3 border-b text-gray-800">{jugador.estado}</td> 
-                    <td className="py-2 px-3 border-b text-gray-800">{jugador.categoria}</td>
+                  <tr key={index} className={`hover:bg-gray-100 ${bgColor}`}>
+                    <td className="py-2 px-3 border-b text-gray-800">{jugador.nombre}</td> 
+                    <td className="py-2 px-3 border-b text-gray-800">{jugador.apellido}</td>
+                    <td className="py-2 px-3 border-b text-gray-800">{jugador.edad}</td>
+                    <td className="py-2 px-3 border-b text-gray-800">{jugador.estado}</td>
                     <td className={`py-2 px-3 border-b flex items-center ${textColor}`}>
                       {icon} <span className="ml-1">{jugador.estado}</span> 
                     </td>
                   </tr>
                 );
-              })}
+              }):(<tr> 
+                <td></td>
+              <td>no hay jugaadores para mostrar</td>
+              <td></td>
+              </tr>)}
             </tbody>
           </table>
         </div>

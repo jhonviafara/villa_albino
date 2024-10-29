@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors'
 import routerLogin from './routes/auth.js';
 import getPlayer from './routes/userRoutes.js';
+import  jugadoresRouter  from './routes/jugadores.routes.js';
 
 
 const app = express();
@@ -15,6 +16,7 @@ dotenv.config();
 // Rutas de logueo
     app.use('/', routerLogin);
     app.use('/home', getPlayer);
+    app.use(jugadoresRouter);
 // Inicia el servidor
     app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
