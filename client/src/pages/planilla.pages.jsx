@@ -20,7 +20,7 @@ function PlanillaPages() {
 
   const getStatusStyles = (estado) => {
     switch (estado) {
-      case 'jugando':
+      case 'Activo':
         return { bgColor: 'bg-green-100', textColor: 'text-green-600', icon: <FaPlay /> };
       case 'Lesionado':
         return { bgColor: 'bg-red-100', textColor: 'text-red-600', icon: <FaExclamationTriangle /> };
@@ -46,6 +46,7 @@ function PlanillaPages() {
                 <th className="py-2 px-3 border-b font-semibold">Nombre</th>
                 <th className="py-2 px-3 border-b font-semibold">apellido</th>
                 <th className="py-2 px-3 border-b font-semibold">edad</th>
+                <th className="py-2 px-3 border-b font-semibold">categoria</th>
                 <th className="py-2 px-3 border-b font-semibold">Estado</th>
               </tr>
             </thead>
@@ -57,9 +58,10 @@ function PlanillaPages() {
                     <td className="py-2 px-3 border-b text-gray-800">{jugador.nombre}</td> 
                     <td className="py-2 px-3 border-b text-gray-800">{jugador.apellido}</td>
                     <td className="py-2 px-3 border-b text-gray-800">{jugador.edad}</td>
-                    <td className="py-2 px-3 border-b text-gray-800">{jugador.estado}</td>
+                    <td className="py-2 px-3 border-b text-gray-800">{jugador.categoria_nombre}</td>
+                    <td className="py-2 px-3 border-b text-gray-800">{icon}{jugador.estado}</td>
                     <td className={`py-2 px-3 border-b flex items-center ${textColor}`}>
-                      {icon} <span className="ml-1">{jugador.estado}</span> 
+                    
                     </td>
                   </tr>
                 );
