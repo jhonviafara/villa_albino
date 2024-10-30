@@ -52,17 +52,14 @@ function PlanillaPages() {
             </thead>
             <tbody>
               {jugadores ? jugadores.map((jugador,index) => {
-                const { bgColor, textColor, icon } = getStatusStyles(jugador.estado);
+                const { bgColor,} = getStatusStyles(jugador.estado);
                 return (
                   <tr key={index} className={`hover:bg-gray-100 ${bgColor}`}>
                     <td className="py-2 px-3 border-b text-gray-800">{jugador.nombre}</td> 
                     <td className="py-2 px-3 border-b text-gray-800">{jugador.apellido}</td>
                     <td className="py-2 px-3 border-b text-gray-800">{jugador.edad}</td>
                     <td className="py-2 px-3 border-b text-gray-800">{jugador.categoria_nombre}</td>
-                    <td className="py-2 px-3 border-b text-gray-800">{icon}{jugador.estado}</td>
-                    <td className={`py-2 px-3 border-b flex items-center ${textColor}`}>
-                    
-                    </td>
+                    <td className="py-2 px-3 border-b text-gray-800">{jugador.estado}</td>                    
                   </tr>
                 );
               }):(<tr> 
