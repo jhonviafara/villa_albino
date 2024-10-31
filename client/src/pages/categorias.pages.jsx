@@ -2,18 +2,19 @@ import { useEffect, useState } from 'react';
 import { FaPlay, FaExclamationTriangle, FaBan } from 'react-icons/fa';
 import Logo from "../assets/Logo-Club.png";
 import Header from '../components/Header';
+import { getCategorias } from '../services/categorias.services';
 
-function PlanillaEPages() {
-  const [entrenadores, setEntrenadores] = useState([]);
+function CategoriasPages() {
+  const [categorias, setCategorias] = useState([]);
 
-  async function obtenerEntrenadores() {
-    const res = await getEntrenadores();
+  async function obtenerCategorias() {
+    const res = await getCategorias();
     console.log(res);
-    setEntrenadores(res);
+    setCategorias(res);
   }
 
   useEffect(() => {
-    obtenerEntrenadores();
+    obtenerCategorias();
   }, []);
 
   const getStatusStyles = (status) => {
@@ -37,31 +38,28 @@ function PlanillaEPages() {
 
       <div className="bg-white shadow-md rounded-lg overflow-hidden w-full max-w-4xl"> 
         <h2 className="text-center text-xl font-semibold py-3 text-gray-700">
-          Lista de Entrenadores
+          Categorias
         </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 text-left text-sm"> 
             <thead>
               <tr className="bg-gray-300 text-gray-700">
                 <th className="py-2 px-3 border-b font-semibold">Nombre</th>
-                <th className="py-2 px-3 border-b font-semibold">Apellido</th>
-                <th className="py-2 px-3 border-b font-semibold">Categoria</th>
+                <th className="py-2 px-3 border-b font-semibold">Cantidad de Jugadores</th>
               </tr>
             </thead>
             <tbody>
-              {entrenadores.length < 0 ?
-              entrenadores.map((entrenador) => {
+              {categorias.length < 0 ?
+              categorias.map((categorias) => {
                 return (
                   <tr key={jugador.id} className={`hover:bg-gray-100 ${bgColor}`}>
-                    <td className="py-2 px-3 border-b text-gray-800">{entrenador.name}</td> 
-                    <td className="py-2 px-3 border-b text-gray-800">{entrenador.apellido}</td>
-                    <td className={`py-2 px-3 border-b flex items-center ${textColor}`}></td>
-                    <td className="py-2 px-3 border-b text-gray-800">{entrenador.categoria}</td>
+                    <td className="py-2 px-3 border-b text-gray-800">{categorias.nombre}</td> 
+                    <td className="py-2 px-3 border-b text-gray-800">{categorias.cantidad}</td>
                   </tr>
                 );
               }):
               <tr>
-              <td colSpan="5" className="py-4 px-6 text-center text-gray-500">No hay entrenadores para mostrar</td>
+              <td colSpan="5" className="py-4 px-6 text-center text-gray-500">No hay Categorias para mostrar</td>
             </tr>}
             </tbody>
           </table>
@@ -72,4 +70,4 @@ function PlanillaEPages() {
   );
 }
 
-export default PlanillaEPages;
+export default CategoriasPages;
