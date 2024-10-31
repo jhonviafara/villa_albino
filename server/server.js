@@ -2,7 +2,6 @@ import dotenv, { config } from 'dotenv';
 import express from 'express';
 import cors from 'cors'
 import routerLogin from './routes/auth.js';
-import getPlayer from './routes/userRoutes.js';
 import  jugadoresRouter  from './routes/jugadores.routes.js';
 
 
@@ -15,7 +14,7 @@ dotenv.config();
     app.use(express.json())
 // Rutas de logueo
     app.use('/', routerLogin);
-    app.use('/home', getPlayer);
+   
     app.use(jugadoresRouter);
 // Inicia el servidor
     app.listen(PORT, () => {

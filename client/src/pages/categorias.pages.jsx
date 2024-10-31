@@ -49,10 +49,12 @@ function CategoriasPages() {
               </tr>
             </thead>
             <tbody>
-              {categorias.length < 0 ?
-              categorias.map((categorias) => {
+              {categorias.length > 0 ?
+              categorias.map((categorias,index) => {
+                const { bgColor } = getStatusStyles(categorias.estado);
+
                 return (
-                  <tr key={jugador.id} className={`hover:bg-gray-100 ${bgColor}`}>
+                  <tr key={index} className={`hover:bg-gray-100 ${bgColor}`}>
                     <td className="py-2 px-3 border-b text-gray-800">{categorias.nombre}</td> 
                     <td className="py-2 px-3 border-b text-gray-800">{categorias.cantidad}</td>
                   </tr>
